@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "33131971544",
+    "project_id": "nursery-a0ebc",
+    "storage_bucket": "nursery-a0ebc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33131971544:android:8ec0bb441ae3e88ea4e8ad",
+        "android_client_info": {
+          "package_name": "com.example.nursery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBU74NNKJE0S-Lj6VQ_49fp7S5En7mov0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
