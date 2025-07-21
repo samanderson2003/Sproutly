@@ -10,26 +10,34 @@ class WeatherService {
 
   Future<Weather?> getCurrentWeather() async {
     try {
+      print('🌍 Getting location...');
       // Get current position
       Position position = await _getCurrentPosition();
+      print(
+        '📍 Location obtained: ${position.latitude}, ${position.longitude}',
+      );
 
       // Fetch weather data
-      final response = await http.get(
-        Uri.parse(
-          '$_baseUrl?lat=${position.latitude}&lon=${position.longitude}&appid=$_apiKey&units=metric',
-        ),
-      );
+      final url =
+          '$_baseUrl?lat=${position.latitude}&lon=${position.longitude}&appid=$_apiKey&units=metric';
+      print('🌐 Calling weather API: $url');
+
+      final response = await http.get(Uri.parse(url));
+      print('📡 API Response status: ${response.statusCode}');
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
+        print('✅ Weather data parsed successfully');
         return Weather.fromJson(data);
+      } else {
+        print('❌ API Error: ${response.statusCode} - ${response.body}');
+        return _getDefaultWeather();
       }
     } catch (e) {
-      print('Error fetching weather: $e');
+      print('❌ Weather service error: $e');
       // Return default weather data if API fails
       return _getDefaultWeather();
     }
-    return null;
   }
 
   Future<Position> _getCurrentPosition() async {
@@ -58,13 +66,13 @@ class WeatherService {
 
   Weather _getDefaultWeather() {
     return Weather(
-      city: 'Your City',
-      country: 'Your Country',
-      temperature: 22.0,
+      city: 'Coimbatore',
+      country: 'India',
+      temperature: 28.0,
       condition: 'Clear',
       description: 'clear sky',
-      humidity: 65,
-      windSpeed: 3.5,
+      humidity: 60,
+      windSpeed: 2.5,
       icon: '01d',
     );
   }

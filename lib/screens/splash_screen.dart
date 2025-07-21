@@ -1,36 +1,32 @@
 import 'package:flutter/material.dart';
-import 'home_screen_simple.dart';
+import 'package:lottie/lottie.dart';
+import 'home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Colors from your screenshot
-    const backgroundColor = Color(0xFFD4B896); // Warm tan
-    const greenColor = Color(
-      0xFF8B8B5A,
-    ); // Muted olive green for text and button
+    const backgroundColor = Color(0xFFD4B896);
+    const greenColor = Color(0xFF8B8B5A);
 
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
-          child: Column(
-            children: [
-              // Top section with title and subtitle
-              Column(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 32),
+              child: Column(
                 children: [
-                  const SizedBox(height: 60),
-                  // Main title
                   RichText(
                     textAlign: TextAlign.center,
-                    text: const TextSpan(
+                    text: TextSpan(
                       children: [
-                        TextSpan(
+                        const TextSpan(
                           text: 'Welcome to ',
                           style: TextStyle(
+                            fontFamily: 'Poppins',
                             fontSize: 32,
                             fontWeight: FontWeight.w700,
                             color: Colors.black,
@@ -40,15 +36,17 @@ class SplashScreen extends StatelessWidget {
                         TextSpan(
                           text: 'Sproutly',
                           style: TextStyle(
+                            fontFamily: 'Poppins',
                             fontSize: 32,
                             fontWeight: FontWeight.w700,
                             color: greenColor,
                             letterSpacing: 0.5,
                           ),
                         ),
-                        TextSpan(
+                        const TextSpan(
                           text: '!',
                           style: TextStyle(
+                            fontFamily: 'Poppins',
                             fontSize: 32,
                             fontWeight: FontWeight.w700,
                             color: Colors.black,
@@ -63,7 +61,8 @@ class SplashScreen extends StatelessWidget {
                     "Plants you'll love, care you can trust.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                      fontSize: 18,
                       color: Colors.black87,
                       fontWeight: FontWeight.w400,
                       letterSpacing: 0.3,
@@ -71,57 +70,60 @@ class SplashScreen extends StatelessWidget {
                   ),
                 ],
               ),
-
-              const SizedBox(height: 20),
-
-              // Center section with a larger illustration
-              Expanded(
-                flex: 4, // Give even more space to the image
-                child: Container(
+            ),
+            Expanded(
+              child: Transform.scale(
+                scale: 1.4,
+                child: SizedBox(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Image.asset(
-                    'assets/splash1.png',
-                    fit: BoxFit.cover,
-                    width: double.infinity,
+                  // NEW WIDGET: Manually translate the animation to the left for perfect centering.
+                  // Adjust the first value (-25.0) as needed.
+                  child: Transform.translate(
+                    offset: const Offset(10.0, 0.0),
+                    child: Lottie.asset(
+                      'assets/splash1.json',
+                      fit: BoxFit.contain,
+                      alignment: Alignment.center,
+                    ),
                   ),
                 ),
               ),
-
-              // Bottom section with button
-              Container(
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 36),
+              child: SizedBox(
                 width: double.infinity,
                 height: 56,
-                margin: const EdgeInsets.only(bottom: 40),
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: greenColor, // Green button
+                    backgroundColor: greenColor,
                     foregroundColor: Colors.white,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        16,
-                      ), // More rounded corners
+                      borderRadius: BorderRadius.circular(28),
                     ),
                   ),
                   child: const Text(
                     'Start Planting',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontFamily: 'Poppins',
+                      fontSize: 24,
                       fontWeight: FontWeight.w700,
                       letterSpacing: 0.5,
                     ),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
