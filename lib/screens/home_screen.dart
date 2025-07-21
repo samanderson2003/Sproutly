@@ -5,6 +5,9 @@ import '../models/weather.dart';
 import '../services/weather_service.dart';
 import '../widgets/weather_icon_widget.dart';
 
+// 1. Import your DiseaseIdentifierScreen
+import '../screens/disease_identifier_screen.dart';
+
 // Your Plant and PlantData classes remain the same...
 class Plant {
   final String name;
@@ -293,7 +296,7 @@ class _HomeScreenState extends State<HomeScreen> {
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
             child: IconButton(
               icon: Icon(
-                Icons.search, // <-- Icon changed from person_outline to search
+                Icons.search,
                 color: const Color(0xFF2D5016),
                 size: 26,
                 shadows: [
@@ -304,7 +307,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              onPressed: () {},
+              // 2. Add navigation logic to the onPressed callback
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DiseaseIdentifierScreen(),
+                  ),
+                );
+              },
             ),
           ),
         ],
