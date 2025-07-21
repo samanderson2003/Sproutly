@@ -54,8 +54,7 @@ class _DiseaseIdentifierScreenState extends State<DiseaseIdentifierScreen> {
     });
 
     // 1. API Key is now hardcoded directly in the code
-    const apiKey =
-        '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';
+    const apiKey = 'hidden';
 
     try {
       // 2. Encode the image to Base64
