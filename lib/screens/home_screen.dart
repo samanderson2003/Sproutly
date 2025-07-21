@@ -586,12 +586,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          // Favorite icon (optional)
-          Positioned(
-            top: 12,
-            right: 14,
-            child: Icon(Icons.favorite_border, color: Colors.white, size: 26),
-          ),
           // See more button (optional)
           Positioned(
             bottom: 18,

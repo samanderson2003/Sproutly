@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
@@ -45,7 +44,7 @@ class _DiseaseIdentifierScreenState extends State<DiseaseIdentifierScreen> {
     }
   }
 
-  // --- NEW: Function to handle the image analysis via OpenAI API ---
+  // --- Function to handle the image analysis via OpenAI API ---
   Future<void> _analyzeImage() async {
     if (_imageFile == null) return;
 
@@ -54,15 +53,9 @@ class _DiseaseIdentifierScreenState extends State<DiseaseIdentifierScreen> {
       _errorMessage = null; // Clear previous errors
     });
 
-    // 1. Get the API Key from .env
-    final apiKey = dotenv.env['OPENAI_API_KEY'];
-    if (apiKey == null) {
-      setState(() {
-        _errorMessage = 'API Key not found. Please check your .env file.';
-        _isLoading = false;
-      });
-      return;
-    }
+    // 1. API Key is now hardcoded directly in the code
+    const apiKey =
+        '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';
 
     try {
       // 2. Encode the image to Base64

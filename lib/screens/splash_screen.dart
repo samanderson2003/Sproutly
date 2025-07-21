@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'home_screen.dart';
+import 'package:nursery/screens/main_screen.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -76,8 +76,6 @@ class SplashScreen extends StatelessWidget {
                 scale: 1.4,
                 child: SizedBox(
                   width: double.infinity,
-                  // NEW WIDGET: Manually translate the animation to the left for perfect centering.
-                  // Adjust the first value (-25.0) as needed.
                   child: Transform.translate(
                     offset: const Offset(10.0, 0.0),
                     child: Lottie.asset(
@@ -96,12 +94,8 @@ class SplashScreen extends StatelessWidget {
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
-                      ),
-                    );
+                    // Navigate to the login screen using its named route
+                    Navigator.pushReplacementNamed(context, '/login');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: greenColor,

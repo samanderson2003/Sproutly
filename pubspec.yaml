@@ -40,8 +40,10 @@ dependencies:
   permission_handler: ^11.0.1
   cached_network_image: ^3.3.0
   lottie: ^3.1.2
-  flutter_dotenv: ^5.1.0 
   image_picker: ^1.1.2
+  firebase_auth: ^5.0.0      # Or latest version
+  cloud_firestore: ^5.0.0   # Or latest version
+  google_sign_in: ^6.2.1    
 
 dev_dependencies:
   flutter_test:
@@ -68,9 +70,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - .env
     - assets/splash1.json
     - assets/loading.json
+    - assets/google_icon.png
     - assets/sunny_weather.png
     - assets/rain_weather.png
     - assets/plants/ # This includes all files in the plants folder
