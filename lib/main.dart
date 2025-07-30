@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart'; // Ensure this is imported
+import 'package:nursery/providers/cart_provider.dart'; // Ensure this is imported
+
+// Your screen imports
 import 'package:nursery/screens/splash_screen.dart';
-import 'package:nursery/screens/login_screen.dart'; // 1. Import Login Screen
-import 'package:nursery/screens/signup_screen.dart'; // 2. Import Signup Screen
-import 'package:nursery/screens/main_screen.dart'; // 3. Import Main Screen
+import 'package:nursery/screens/login_screen.dart';
+import 'package:nursery/screens/signup_screen.dart';
+import 'package:nursery/screens/main_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,16 +20,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      // The app starts with the SplashScreen
-      home: const SplashScreen(),
-      // 4. Define all the navigation routes for your app
-      routes: {
-        '/login': (context) => const LoginPage(),
-        '/signup': (context) => const SignupPage(),
-        '/main': (context) => const MainScreen(),
-      },
+    // This wrapper makes the CartProvider available to your entire app
+    return ChangeNotifierProvider(
+      create: (context) => CartProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        // Your existing routes and home screen remain the same
+        home: const SplashScreen(),
+        routes: {
+          '/login': (context) => const LoginPage(),
+          '/signup': (context) => const SignupPage(),
+          '/main': (context) => const MainScreen(),
+        },
+      ),
     );
   }
 }
