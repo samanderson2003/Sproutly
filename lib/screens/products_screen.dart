@@ -10,6 +10,56 @@ class ProductsScreen extends StatelessWidget {
   // --- Static Data based on the guide ---
   static final List<Product> _livePlants = [
     const Product(
+      name: 'ZZ Plant',
+      image: 'assets/plants/zz_plant.png',
+      price: 30.99,
+    ),
+    const Product(
+      name: 'Golden Pothos',
+      image: 'assets/plants/golden_pothos.png',
+      price: 18.99,
+    ),
+    const Product(
+      name: 'Spider Plant',
+      image: 'assets/plants/spider_plant.png',
+      price: 15.99,
+    ),
+    const Product(
+      name: 'String of Pearls',
+      image: 'assets/plants/string_of_pearls.png',
+      price: 24.99,
+    ),
+    const Product(
+      name: 'Calathea Orbifolia',
+      image: 'assets/plants/calathea_orbifolia.png',
+      price: 38.99,
+    ),
+    const Product(
+      name: 'Bird of Paradise',
+      image: 'assets/plants/bird_of_paradise.png',
+      price: 75.99,
+    ),
+    const Product(
+      name: 'Rubber Plant',
+      image: 'assets/plants/rubber_plant.png',
+      price: 42.99,
+    ),
+    const Product(
+      name: 'Aloe Vera',
+      image: 'assets/plants/aloe_vera.png',
+      price: 14.99,
+    ),
+    const Product(
+      name: 'Phalaenopsis Orchid',
+      image: 'assets/plants/orchid.png',
+      price: 28.99,
+    ),
+    const Product(
+      name: 'Succulent Pack (x5)',
+      image: 'assets/plants/succulent_pack.png',
+      price: 20.99,
+    ),
+    const Product(
       name: 'Monstera',
       image: 'assets/plants/monstera_deliciosa.png',
       price: 45.99,
@@ -57,6 +107,56 @@ class ProductsScreen extends StatelessWidget {
       image: 'assets/pots/metal_stand.png',
       price: 29.99,
     ),
+    const Product(
+      name: 'Self-Watering Pot',
+      image: 'assets/pots/self_watering_pot.png',
+      price: 24.99,
+    ),
+    const Product(
+      name: 'Wooden Planter Box',
+      image: 'assets/pots/wooden_planter_box.png',
+      price: 35.99,
+    ),
+    const Product(
+      name: 'Concrete Planter',
+      image: 'assets/pots/concrete_planter.png',
+      price: 22.99,
+    ),
+    const Product(
+      name: 'Wall Planter',
+      image: 'assets/pots/wall_planter.png',
+      price: 18.99,
+    ),
+    const Product(
+      name: 'Macrame Plant Hanger',
+      image: 'assets/pots/macrame_hanger.png',
+      price: 12.99,
+    ),
+    const Product(
+      name: 'Window Box',
+      image: 'assets/pots/window_box.png',
+      price: 28.99,
+    ),
+    const Product(
+      name: 'Fabric Pot (5 Gallon)',
+      image: 'assets/pots/fabric_pot.png',
+      price: 8.99,
+    ),
+    const Product(
+      name: 'Bonsai Pot',
+      image: 'assets/pots/bonsai_pot.png',
+      price: 21.99,
+    ),
+    const Product(
+      name: 'Saucer Tray Pack (x3)',
+      image: 'assets/pots/saucer_pack.png',
+      price: 11.99,
+    ),
+    const Product(
+      name: 'Vertical Garden Planter',
+      image: 'assets/pots/vertical_planter.png',
+      price: 49.99,
+    ),
   ];
 
   static final List<Product> _gardeningTools = [
@@ -80,6 +180,48 @@ class ProductsScreen extends StatelessWidget {
       image: 'assets/tools/watering_can.png',
       price: 12.99,
     ),
+    const Product(
+      name: 'Hand Cultivator',
+      image: 'assets/tools/cultivator.png',
+      price: 8.99,
+    ),
+    const Product(
+      name: 'Weeder',
+      image: 'assets/tools/weeder.png',
+      price: 9.99,
+    ),
+    const Product(
+      name: 'Garden Fork',
+      image: 'assets/tools/fork.png',
+      price: 18.99,
+    ),
+    const Product(
+      name: 'Kneeling Pad',
+      image: 'assets/tools/kneeling_pad.png',
+      price: 14.99,
+    ),
+    const Product(
+      name: 'Hose Nozzle',
+      image: 'assets/tools/hose_nozzle.png',
+      price: 11.99,
+    ),
+    const Product(
+      name: 'Pruning Saw',
+      image: 'assets/tools/saw.png',
+      price: 22.99,
+    ),
+    const Product(
+      name: 'Wheelbarrow',
+      image: 'assets/tools/wheelbarrow.png',
+      price: 89.99,
+    ),
+    const Product(name: 'Spade', image: 'assets/tools/spade.png', price: 25.99),
+    const Product(name: 'Rake', image: 'assets/tools/rake.png', price: 19.99),
+    const Product(
+      name: 'Dibber',
+      image: 'assets/tools/dibber.png',
+      price: 6.99,
+    ),
   ];
 
   static final List<Product> _soilAndFertilizers = [
@@ -97,6 +239,56 @@ class ProductsScreen extends StatelessWidget {
       name: 'Neem Oil (100ml)',
       image: 'assets/soil/neem_oil.png',
       price: 6.99,
+    ),
+    const Product(
+      name: 'Orchid Bark Mix',
+      image: 'assets/soil/orchid_mix.png',
+      price: 12.99,
+    ),
+    const Product(
+      name: 'Cactus Soil Mix',
+      image: 'assets/soil/cactus_mix.png',
+      price: 9.99,
+    ),
+    const Product(
+      name: 'Perlite (2L)',
+      image: 'assets/soil/perlite.png',
+      price: 7.99,
+    ),
+    const Product(
+      name: 'Peat Moss',
+      image: 'assets/soil/peat_moss.png',
+      price: 10.99,
+    ),
+    const Product(
+      name: 'All-Purpose Plant Food',
+      image: 'assets/soil/plant_food.png',
+      price: 11.99,
+    ),
+    const Product(
+      name: 'Bone Meal (500g)',
+      image: 'assets/soil/bone_meal.png',
+      price: 8.99,
+    ),
+    const Product(
+      name: 'Blood Meal (500g)',
+      image: 'assets/soil/blood_meal.png',
+      price: 8.99,
+    ),
+    const Product(
+      name: 'Epsom Salt (1kg)',
+      image: 'assets/soil/epsom_salt.png',
+      price: 9.99,
+    ),
+    const Product(
+      name: 'Horticultural Charcoal',
+      image: 'assets/soil/charcoal.png',
+      price: 13.99,
+    ),
+    const Product(
+      name: 'Sphagnum Moss',
+      image: 'assets/soil/sphagnum_moss.png',
+      price: 10.99,
     ),
   ];
 
