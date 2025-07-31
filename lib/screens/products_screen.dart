@@ -11,7 +11,7 @@ class ProductsScreen extends StatelessWidget {
   static final List<Product> _livePlants = [
     const Product(
       name: 'ZZ Plant',
-      image: 'assets/plants/zz_plant.png', //changes
+      image: 'assets/plants/zz_plant.png',
       price: 30.99,
     ),
     const Product(

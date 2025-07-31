@@ -44,6 +44,8 @@ dependencies:
   firebase_auth: ^5.0.0      # Or latest version
   cloud_firestore: ^5.0.0   # Or latest version
   google_sign_in: ^6.2.1    
+  provider: ^6.1.2
+
 
 dev_dependencies:
   flutter_test:
@@ -75,7 +77,8 @@ flutter:
     - assets/google_icon.png
     - assets/sunny_weather.png
     - assets/rain_weather.png
-    - assets/plants/ # This includes all files in the plants folder
+    - assets/plants/
+    - assets/pots/ # This includes all files in the pots folder
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
