@@ -11,7 +11,7 @@ class ProductsScreen extends StatelessWidget {
   static final List<Product> _livePlants = [
     const Product(
       name: 'ZZ Plant',
-      image: 'assets/plants/zz_plant.png',
+      image: 'assets/plants/zz_plant.png', //changes
       price: 30.99,
     ),
     const Product(
@@ -66,7 +66,7 @@ class ProductsScreen extends StatelessWidget {
     ),
     const Product(
       name: 'Snake Plant',
-      image: 'assets/plants/snake_plant.jpg',
+      image: 'assets/plants/snake_plant.png',
       price: 25.99,
     ),
     const Product(
@@ -76,12 +76,12 @@ class ProductsScreen extends StatelessWidget {
     ),
     const Product(
       name: 'Peace Lily',
-      image: 'assets/plants/peace_lily.jpg',
+      image: 'assets/plants/peace_lily.png',
       price: 32.99,
     ),
     const Product(
       name: 'Rose Bush',
-      image: 'assets/plants/rose_bush.jpg',
+      image: 'assets/plants/rose_bush.png',
       price: 22.99,
     ),
   ];
@@ -309,7 +309,7 @@ class ProductsScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
         children: [
           _buildSection('Live Plants', _livePlants),
           _buildSection('Pots & Planters', _potsAndPlanters),
@@ -337,7 +337,8 @@ class ProductsScreen extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         SizedBox(
-          height: 250,
+          // ** CHANGE: Adjusted height for the new card design **
+          height: 260,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -353,90 +354,118 @@ class ProductsScreen extends StatelessWidget {
   }
 }
 
+// ** CHANGE: The entire Product Card widget has been updated **
 class _ProductCard extends StatelessWidget {
   final Product product;
-
   const _ProductCard({required this.product});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 160,
-      margin: const EdgeInsets.only(right: 16.0),
-      child: Card(
-        clipBehavior: Clip.antiAlias,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18.0),
-        ),
-        elevation: 3,
-        shadowColor: Colors.black.withOpacity(0.05),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(product.image),
-                    fit: BoxFit.cover,
+      width: 180, // Made cards slightly wider for a better look
+      margin: const EdgeInsets.only(right: 12.0),
+      child: InkWell(
+        onTap: () {
+          // Optional: Add navigation to a product detail page here
+        },
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(22),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              // 1. Background Image
+              Image.asset(product.image, fit: BoxFit.cover),
+              // 2. Bottom Gradient for text visibility
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  height: 120,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.transparent,
+                        Colors.black.withOpacity(0.6),
+                        Colors.black.withOpacity(0.8),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(12, 12, 12, 6),
-              child: Text(
-                product.name,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Color(0xFF2D5016),
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(12, 0, 8, 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '\$${product.price.toStringAsFixed(2)}',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Color(0xFF2D5016),
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.add_shopping_cart,
-                      color: Color(0xFF2D5016),
-                    ),
-                    onPressed: () {
-                      final cart = Provider.of<CartProvider>(
-                        context,
-                        listen: false,
-                      );
-                      cart.addItem(product);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('${product.name} added to cart!'),
-                          duration: const Duration(seconds: 2),
-                          action: SnackBarAction(
-                            label: 'UNDO',
-                            onPressed: () => cart.removeItem(product),
+              // 3. Text and Add to Cart Button
+              Positioned(
+                bottom: 12,
+                left: 12,
+                right: 12,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    // Product Name and Price
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            product.name,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
+                          const SizedBox(height: 4),
+                          Text(
+                            '\$${product.price.toStringAsFixed(2)}',
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.9),
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    // Add to Cart Button
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.25),
+                        shape: BoxShape.circle,
+                      ),
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.add_shopping_cart,
+                          color: Colors.white,
                         ),
-                      );
-                    },
-                    tooltip: 'Add to cart',
-                  ),
-                ],
+                        onPressed: () {
+                          final cart = Provider.of<CartProvider>(
+                            context,
+                            listen: false,
+                          );
+                          cart.addItem(product);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('${product.name} added to cart!'),
+                              duration: const Duration(seconds: 2),
+                              action: SnackBarAction(
+                                label: 'UNDO',
+                                onPressed: () => cart.removeItem(product),
+                              ),
+                            ),
+                          );
+                        },
+                        tooltip: 'Add to cart',
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
