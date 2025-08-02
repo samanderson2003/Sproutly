@@ -53,7 +53,7 @@ class _MainScreenState extends State<MainScreen> {
         selectedItemColor: const Color(0xFF2D5016),
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFFF8F6F0),
         type: BottomNavigationBarType.fixed,
         showUnselectedLabels: true,
       ),
