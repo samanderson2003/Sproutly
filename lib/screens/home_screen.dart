@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import '../models/weather.dart';
 import '../services/weather_service.dart';
 import '../widgets/weather_icon_widget.dart';
+import 'package:nursery/screens/order_history_screen.dart';
 
 // 1. Import your DiseaseIdentifierScreen
 import '../screens/disease_identifier_screen.dart';
@@ -274,6 +275,30 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        // **MODIFIED PART**: Added the title back and centered it.
+        leading: IconButton(
+          icon: Icon(
+            Icons.receipt_long,
+            color: const Color(0xFF2D5016),
+            size: 26,
+            shadows: [
+              Shadow(
+                color: Colors.white.withOpacity(0.8),
+                offset: const Offset(0, 1),
+                blurRadius: 2,
+              ),
+            ],
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const OrderHistoryScreen(),
+              ),
+            );
+          },
+          tooltip: 'Order History',
+        ),
         title: Text(
           'Sproutly',
           style: TextStyle(
@@ -289,7 +314,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-        centerTitle: false,
+        centerTitle: true,
         actions: [
           Container(
             margin: const EdgeInsets.only(right: 8),
@@ -307,7 +332,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              // 2. Add navigation logic to the onPressed callback
               onPressed: () {
                 Navigator.push(
                   context,

@@ -38,8 +38,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
     }
 
     try {
-      // Create a new order document in Firestore
+      // CORRECT STRUCTURE: Create a new document in the root-level 'orders' collection.
+      // This is the most scalable approach for an e-commerce app.
       await FirebaseFirestore.instance.collection('orders').add({
+        // We add the userId to link this order back to the user who made it.
         'userId': user.uid,
         'userEmail': user.email,
         'totalAmount': cart.totalPrice,
@@ -49,11 +51,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
             'productName': entry.key.name,
             'quantity': entry.value,
             'price': entry.key.price,
+            // Storing the image path can be useful for the history screen
+            'image': entry.key.image,
           };
         }).toList(),
       });
 
-      // Clear the cart
+      // Clear the cart after successful order
       cart.clear();
 
       // Show success animation and navigate
@@ -166,8 +170,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           (item) => Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
+                                CircleAvatar(
+                                  radius: 20,
+                                  backgroundImage: AssetImage(item.key.image),
+                                ),
+                                const SizedBox(width: 12),
                                 Expanded(
                                   child: Text(
                                     '${item.key.name} (x${item.value})',
@@ -223,7 +231,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  // This is a mock payment details section
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
@@ -271,7 +278,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton.icon(
-                      // **FIXED LINE**
                       icon: const Icon(Icons.security, color: Colors.white),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: primaryColor,
