@@ -16,7 +16,7 @@ Plant care and gardening are challenging for many due to a lack of timely guidan
 
 ---
 
-## 📝 Abstract
+## 📝 Objective
 
 Sproutly solves these issues by combining an online nursery shop with a smart plant care assistant, leveraging the power of Flutter, Dart, and Firebase. It provides timely notifications for plant care based on local weather, recommends suitable plants, and includes an AI-based image diagnosis feature for plant diseases. Sproutly brings together buying, caring, and diagnosing plants into a single, easy-to-use mobile app.
 
