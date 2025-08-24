@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nursery/screens/order_history_screen.dart';
 import 'package:provider/provider.dart';
 // Correct imports based on your file structure
 import 'package:nursery/models/product.dart';
@@ -317,6 +318,21 @@ class ProductsScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         automaticallyImplyLeading: false,
+        // **MODIFIED PART**: Added actions for the order history button
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.receipt_long, color: Color(0xFF2D5016)),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const OrderHistoryScreen(),
+                ),
+              );
+            },
+            tooltip: 'Order History',
+          ),
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),

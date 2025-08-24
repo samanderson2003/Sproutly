@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:lottie/lottie.dart';
+import 'package:nursery/screens/community_chat_screen.dart';
 import '../models/weather.dart';
 import '../services/weather_service.dart';
 import '../widgets/weather_icon_widget.dart';
-import 'package:nursery/screens/order_history_screen.dart';
+import 'package:nursery/screens/news_screen.dart';
 
-// 1. Import your DiseaseIdentifierScreen
+// Import your DiseaseIdentifierScreen
 import '../screens/disease_identifier_screen.dart';
 
 // Your Plant and PlantData classes remain the same...
@@ -275,10 +276,9 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        // **MODIFIED PART**: Added the title back and centered it.
         leading: IconButton(
           icon: Icon(
-            Icons.receipt_long,
+            Icons.chat_bubble_outline,
             color: const Color(0xFF2D5016),
             size: 26,
             shadows: [
@@ -293,11 +293,11 @@ class _HomeScreenState extends State<HomeScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const OrderHistoryScreen(),
+                builder: (context) => const CommunityChatScreen(),
               ),
             );
           },
-          tooltip: 'Order History',
+          tooltip: 'Community Chat',
         ),
         title: Text(
           'Sproutly',
@@ -315,13 +315,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         centerTitle: true,
+        // **MODIFIED PART**: Added the actions property for the news button
         actions: [
           Container(
             margin: const EdgeInsets.only(right: 8),
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
             child: IconButton(
               icon: Icon(
-                Icons.search,
+                Icons.article_outlined,
                 color: const Color(0xFF2D5016),
                 size: 26,
                 shadows: [
@@ -335,41 +336,63 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
+                  MaterialPageRoute(builder: (context) => const NewsScreen()),
+                );
+              },
+              tooltip: 'Gardening News',
+            ),
+          ),
+        ],
+      ),
+      body: Stack(
+        children: [
+          _isLoading
+              ? Center(
+                  child: Lottie.asset(
+                    'assets/loading.json',
+                    width: 200,
+                    height: 200,
+                  ),
+                )
+              : RefreshIndicator(
+                  color: const Color(0xFF2D5016),
+                  onRefresh: _loadData,
+                  child: SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    padding: const EdgeInsets.fromLTRB(20, 120, 20, 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildWeatherCard(),
+                        const SizedBox(height: 24),
+                        _buildCareTipsSection(),
+                        const SizedBox(height: 24),
+                        _buildRecommendedPlantsSection(),
+                      ],
+                    ),
+                  ),
+                ),
+          Positioned(
+            bottom: 20,
+            right: 20,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
                   MaterialPageRoute(
                     builder: (context) => const DiseaseIdentifierScreen(),
                   ),
                 );
               },
+              child: Lottie.asset(
+                'assets/Green Robot.json',
+                width: 100,
+                height: 100,
+              ),
             ),
           ),
         ],
       ),
-      body: _isLoading
-          ? Center(
-              child: Lottie.asset(
-                'assets/loading.json',
-                width: 200,
-                height: 200,
-              ),
-            )
-          : RefreshIndicator(
-              color: const Color(0xFF2D5016),
-              onRefresh: _loadData,
-              child: SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                padding: const EdgeInsets.fromLTRB(20, 120, 20, 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildWeatherCard(),
-                    const SizedBox(height: 24),
-                    _buildCareTipsSection(),
-                    const SizedBox(height: 24),
-                    _buildRecommendedPlantsSection(),
-                  ],
-                ),
-              ),
-            ),
     );
   }
 
