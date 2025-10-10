@@ -35,7 +35,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   firebase_core: ^3.15.1
-  http: ^1.1.0
   geolocator: ^9.0.2
   permission_handler: ^11.0.1
   cached_network_image: ^3.3.0
@@ -46,6 +45,8 @@ dependencies:
   google_sign_in: ^6.2.1    
   provider: ^6.1.2
   intl: ^0.19.0
+  http: ^1.2.1 
+  url_launcher: ^6.3.0 
 
 
 dev_dependencies:
@@ -83,7 +84,10 @@ flutter:
     - assets/pots/
     - assets/gardenTools/
     - assets/soil/
+    - assets/business/
     - assets/settings_10208910.png
+    - assets/Green Robot.json
+    - assets/Plant Scanning.json
      # This includes all files in the pots folder
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

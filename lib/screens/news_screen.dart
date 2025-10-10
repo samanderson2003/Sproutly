@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
+import 'business_ideas_screen.dart'; // ** 1. ADD THIS IMPORT **
 
 // --- Model Class for an Article ---
 // This helps organize the data from the API
@@ -112,6 +113,21 @@ class _NewsScreenState extends State<NewsScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         automaticallyImplyLeading: false,
+        // ** 2. ADD THE ACTIONS PROPERTY FOR THE ICON BUTTON **
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.lightbulb_outline, color: primaryColor),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const BusinessIdeasScreen(),
+                ),
+              );
+            },
+            tooltip: 'Profit Calculator',
+          ),
+        ],
       ),
       body: FutureBuilder<List<Article>>(
         future: _newsFuture,
