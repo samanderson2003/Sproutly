@@ -85,6 +85,7 @@ flutter:
     - assets/gardenTools/
     - assets/soil/
     - assets/business/
+    - assets/guides/
     - assets/settings_10208910.png
     - assets/Green Robot.json
     - assets/Plant Scanning.json
