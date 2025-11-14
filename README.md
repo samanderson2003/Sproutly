@@ -1,4 +1,4 @@
-# 🌱 Sproutly...
+# 🌱 Sproutly
 
 **Online Nursery Shop & Smart Plant Care Application**
 
