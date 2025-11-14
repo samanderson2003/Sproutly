@@ -1,6 +1,6 @@
 # 🌱 Sproutly...
 
-**Online Nursery Shop & Smart Plant Care Application**
+**Online Nursery Shop & Smart Plant Care Application using flutter**
 
 ---
 
